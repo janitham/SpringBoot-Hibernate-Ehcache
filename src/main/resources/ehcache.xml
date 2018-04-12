@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ehcache>
-    <diskStore path="java.io.tmpdir/ehcache"/>
-    <cache name="book" maxEntriesLocalHeap="200" eternal="false"
-           timeToIdleSeconds="8" timeToLiveSeconds="8">
-        <persistence strategy="localTempSwap"/>
-    </cache>
-</ehcache>
