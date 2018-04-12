@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -27,10 +28,11 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         addToDb();
+        System.out.println("adding completed");
         printAll();
     }
 
-    public void addToDb() {
+    public void addToDb() throws InterruptedException {
         for (int i = 0; i < 5; i++) {
             Book book = new Book();
             book.setName("Book:" + i);
@@ -38,8 +40,11 @@ public class Application implements CommandLineRunner {
         }
     }
 
-    public void printAll() {
-        List<Book> books = (List<Book>) bookRepository.findAll();
-        books.stream().forEach(System.out::println);
+    public void printAll() throws InterruptedException {
+        for (int i = 1; i < 6; i++) {
+            Optional<Book> book = bookRepository.findById(i);
+            System.out.println(book.get());
+            Thread.sleep(2000);
+        }
     }
 }

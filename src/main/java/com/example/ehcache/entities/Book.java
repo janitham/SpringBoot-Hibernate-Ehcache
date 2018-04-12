@@ -1,5 +1,8 @@
 package com.example.ehcache.entities;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +11,7 @@ import java.io.Serializable;
 import java.text.MessageFormat;
 
 @Entity
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "book")
 public class Book implements Serializable {
 
     @Id
