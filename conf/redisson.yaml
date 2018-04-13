@@ -1,3 +1,6 @@
+# redisson configuration for redis servers
+# see : https://github.com/mrniko/redisson/wiki/2.-Configuration
+
 singleServerConfig:
   idleConnectionTimeout: 10000
   pingTimeout: 1000
