@@ -2,7 +2,6 @@ package com.example.ehcache;
 
 import com.example.ehcache.entities.Book;
 import com.example.ehcache.repositories.BookRepository;
-import org.hibernate.cache.redis.hibernate5.SingletonRedisRegionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
@@ -29,8 +28,6 @@ public class Application implements CommandLineRunner {
         addToDb();
         System.out.println("adding completed");
         printAll();
-
-        //SingletonRedisRegionFactory k;
     }
 
     public void addToDb() throws InterruptedException {
@@ -46,7 +43,6 @@ public class Application implements CommandLineRunner {
             Optional<Book> book = bookRepository.findById(i);
             System.out.println(book.get());
             Thread.sleep(2000);
-           SingletonRedisRegionFactory k;
         }
     }
 }
